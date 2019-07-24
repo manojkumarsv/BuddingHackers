@@ -1,4 +1,13 @@
     $(document).ready(function(){
+    	$("#register").click(function(){
+    		$.ajax({
+                url: '/register',
+                method: "GET",
+                success: function(response) {
+                    $("#first").html( response );
+                }
+            });
+    	});
         $("#login").click(function(){
         	var loginData={
         		userName: $('#loginusername').val(),
@@ -10,16 +19,22 @@
                 data: JSON.stringify(loginData),
                 contentType: "application/json; charset=utf-8",
                 success:function(data){
-                	debugger;
-                    if(data == "OK")
+                    if(data != "OK")
                     {
-                        $("#first").hide();
-                        $("#second").show();
+                        alert("Login failed. Please try again");
                     }
-                    else
-                    {
-                        alert("Please try again");
-                    }
+                },
+                complete: function (data) {
+                	$.ajax({
+                        url: '/predict',
+                        method: "GET",
+                        success: function(response) {
+                            $("#first").html( response );
+                        }
+                    });
+                },
+                error: function(textStatus, errorThrown) {
+                	alert(textStatus);
                 }
             });
         });
