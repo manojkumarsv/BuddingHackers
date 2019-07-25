@@ -1,0 +1,112 @@
+2019-07-25 15:24:39,113 DEBUG:food predictor class instantiated
+2019-07-25 15:24:39,113 DEBUG:loading dataset
+2019-07-25 15:24:39,137 INFO:Predicted food person: [150.4752972]
+2019-07-25 15:27:57,599 DEBUG:food predictor class instantiated
+2019-07-25 15:27:57,599 DEBUG:loading dataset
+2019-07-25 15:27:57,621 INFO:Predicted food person: [147.94066457]
+2019-07-25 15:28:04,481 DEBUG:food predictor class instantiated
+2019-07-25 15:28:04,481 DEBUG:loading dataset
+2019-07-25 15:28:04,505 INFO:Predicted food person: [145.49956355]
+2019-07-25 15:28:27,545 DEBUG:food predictor class instantiated
+2019-07-25 15:28:27,545 DEBUG:loading dataset
+2019-07-25 15:28:27,568 INFO:Predicted food person: [145.39989473]
+2019-07-25 15:28:48,026 DEBUG:food predictor class instantiated
+2019-07-25 15:28:48,026 DEBUG:loading dataset
+2019-07-25 15:28:48,050 INFO:Predicted food person: [149.17518272]
+2019-07-25 15:32:22,322 DEBUG:food predictor class instantiated
+2019-07-25 15:32:22,322 DEBUG:loading dataset
+2019-07-25 15:34:26,300 DEBUG:food predictor class instantiated
+2019-07-25 15:34:26,300 DEBUG:loading dataset
+2019-07-25 15:34:26,326 INFO:Predicted food person: [143.99312764]
+2019-07-25 15:34:39,372 DEBUG:food predictor class instantiated
+2019-07-25 15:34:39,372 DEBUG:loading dataset
+2019-07-25 15:34:39,397 INFO:Predicted food person: [146.73611961]
+2019-07-25 15:34:51,715 DEBUG:food predictor class instantiated
+2019-07-25 15:34:51,716 DEBUG:loading dataset
+2019-07-25 15:34:51,737 INFO:Predicted food person: [148.68187265]
+2019-07-25 15:34:54,426 DEBUG:food predictor class instantiated
+2019-07-25 15:34:54,426 DEBUG:loading dataset
+2019-07-25 15:34:54,454 INFO:Predicted food person: [149.33400894]
+2019-07-25 15:35:17,311 DEBUG:food predictor class instantiated
+2019-07-25 15:35:17,311 DEBUG:loading dataset
+2019-07-25 15:35:17,348 INFO:Predicted food person: [145.53556773]
+2019-07-25 15:35:45,343 DEBUG:food predictor class instantiated
+2019-07-25 15:35:45,343 DEBUG:loading dataset
+2019-07-25 15:35:53,660 DEBUG:food predictor class instantiated
+2019-07-25 15:35:53,660 DEBUG:loading dataset
+2019-07-25 15:35:53,692 INFO:Predicted food person: [148.0759008]
+2019-07-25 15:35:56,702 DEBUG:food predictor class instantiated
+2019-07-25 15:35:56,702 DEBUG:loading dataset
+2019-07-25 15:35:56,732 INFO:Predicted food person: [148.86112716]
+2019-07-25 15:36:29,853 DEBUG:food predictor class instantiated
+2019-07-25 15:36:29,853 DEBUG:loading dataset
+2019-07-25 15:36:29,886 INFO:Predicted food person: [149.68297271]
+2019-07-25 15:36:51,146 DEBUG:food predictor class instantiated
+2019-07-25 15:36:51,146 DEBUG:loading dataset
+2019-07-25 15:36:51,176 INFO:Predicted food person: [146.85048393]
+2019-07-25 15:37:18,951 DEBUG:food predictor class instantiated
+2019-07-25 15:37:18,951 DEBUG:loading dataset
+2019-07-25 15:37:18,980 INFO:Predicted food person: [145.03758647]
+2019-07-25 15:37:32,812 DEBUG:food predictor class instantiated
+2019-07-25 15:37:32,812 DEBUG:loading dataset
+2019-07-25 15:37:32,842 INFO:Predicted food person: [148.44453606]
+2019-07-25 15:37:38,903 DEBUG:food predictor class instantiated
+2019-07-25 15:37:38,904 DEBUG:loading dataset
+2019-07-25 15:37:38,935 INFO:Predicted food person: [149.50092352]
+2019-07-25 15:37:52,126 DEBUG:food predictor class instantiated
+2019-07-25 15:37:52,126 DEBUG:loading dataset
+2019-07-25 15:37:52,157 INFO:Predicted food person: [148.27685694]
+2019-07-25 15:38:09,448 DEBUG:food predictor class instantiated
+2019-07-25 15:38:09,448 DEBUG:loading dataset
+2019-07-25 15:38:09,484 INFO:Predicted food person: [148.62530915]
+2019-07-25 15:38:26,335 DEBUG:food predictor class instantiated
+2019-07-25 15:38:26,336 DEBUG:loading dataset
+2019-07-25 15:38:26,367 INFO:Predicted food person: [145.99858246]
+2019-07-25 15:39:08,477 DEBUG:food predictor class instantiated
+2019-07-25 15:39:08,477 DEBUG:loading dataset
+2019-07-25 15:39:08,513 INFO:Predicted food person: [150.11581254]
+2019-07-25 15:39:18,756 DEBUG:food predictor class instantiated
+2019-07-25 15:39:18,756 DEBUG:loading dataset
+2019-07-25 15:39:18,788 INFO:Predicted food person: [147.02591375]
+2019-07-25 15:39:52,349 DEBUG:food predictor class instantiated
+2019-07-25 15:39:52,349 DEBUG:loading dataset
+2019-07-25 15:39:52,381 INFO:Predicted food person: [149.68245143]
+2019-07-25 15:40:07,437 DEBUG:food predictor class instantiated
+2019-07-25 15:40:07,437 DEBUG:loading dataset
+2019-07-25 15:40:07,473 INFO:Predicted food person: [144.51701881]
+2019-07-25 15:40:37,745 DEBUG:food predictor class instantiated
+2019-07-25 15:40:37,745 DEBUG:loading dataset
+2019-07-25 15:40:37,775 INFO:Predicted food person: [143.85401207]
+2019-07-25 15:40:48,149 DEBUG:food predictor class instantiated
+2019-07-25 15:40:48,150 DEBUG:loading dataset
+2019-07-25 15:40:48,180 INFO:Predicted food person: [147.36628554]
+2019-07-25 15:41:10,761 DEBUG:food predictor class instantiated
+2019-07-25 15:41:10,762 DEBUG:loading dataset
+2019-07-25 15:41:10,792 INFO:Predicted food person: [149.66788884]
+2019-07-25 15:41:20,373 DEBUG:food predictor class instantiated
+2019-07-25 15:41:20,373 DEBUG:loading dataset
+2019-07-25 15:41:20,402 INFO:Predicted food person: [150.15011068]
+2019-07-25 15:41:51,802 DEBUG:food predictor class instantiated
+2019-07-25 15:41:51,803 DEBUG:loading dataset
+2019-07-25 15:41:51,844 INFO:Predicted food person: [149.68998383]
+2019-07-25 15:42:09,039 DEBUG:food predictor class instantiated
+2019-07-25 15:42:09,039 DEBUG:loading dataset
+2019-07-25 15:42:09,078 INFO:Predicted food person: [147.93403776]
+2019-07-25 15:42:23,873 DEBUG:food predictor class instantiated
+2019-07-25 15:42:23,873 DEBUG:loading dataset
+2019-07-25 15:42:23,919 INFO:Predicted food person: [150.0649689]
+2019-07-25 15:43:31,393 DEBUG:food predictor class instantiated
+2019-07-25 15:43:31,393 DEBUG:loading dataset
+2019-07-25 15:43:31,435 INFO:Predicted food person: [151.50531278]
+2019-07-25 15:43:42,278 DEBUG:food predictor class instantiated
+2019-07-25 15:43:42,278 DEBUG:loading dataset
+2019-07-25 15:43:42,310 INFO:Predicted food person: [149.76641922]
+2019-07-25 15:44:07,506 DEBUG:food predictor class instantiated
+2019-07-25 15:44:07,506 DEBUG:loading dataset
+2019-07-25 15:44:07,535 INFO:Predicted food person: [149.02727532]
+2019-07-25 15:44:23,927 DEBUG:food predictor class instantiated
+2019-07-25 15:44:23,928 DEBUG:loading dataset
+2019-07-25 15:44:23,952 INFO:Predicted food person: [149.39764124]
+2019-07-25 15:45:01,629 DEBUG:food predictor class instantiated
+2019-07-25 15:45:01,629 DEBUG:loading dataset
+2019-07-25 15:45:01,674 INFO:Predicted food person: [147.04575057]
