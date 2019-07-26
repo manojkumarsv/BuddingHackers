@@ -12,13 +12,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.metrics import accuracy_score
+from sklearn import linear_model
 
 import Logger
 inst_log = Logger.Logger()
 fp_logger = inst_log.setLoggerConfig()
 
 homeDir = path.abspath(path.join(__file__,"../../../../"))
-datafile = homeDir + "\data\\fwdata.csv"
+datafile = homeDir + "/data//fwdata.csv"
 
 class foodPred:
 	
@@ -77,7 +78,7 @@ class foodPred:
 		return model
 
 	
-FoodPersonData = {'days':['Friday'],'occasion':['NonVeg'],'attendance':[147]}	
+FoodPersonData = {'days':['Friday'],'occasion':['NonVeg'],'attendance':[47]}	
 
 fp = foodPred()
 model = fp.createModel()

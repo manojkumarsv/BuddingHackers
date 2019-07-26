@@ -12,7 +12,7 @@ from imp import reload
 reload(logging)
 
 homeDir = path.abspath(path.join(__file__,"../../../../"))
-logfile = homeDir + "\log\\foodPredictor.log"
+logfile = homeDir + "/log//foodPredictor.log"
 
 class Logger:
 	def setLoggerConfig(self):
