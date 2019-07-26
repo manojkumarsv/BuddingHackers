@@ -68,10 +68,10 @@ class foodPred:
 		#	# The coefficients
 		fp_logger.debug('Coefficients: \n' + str(model.coef_))
 		fp_logger.debug('Intercept:\n' + str(model.intercept_))
-# 		# The mean squared error
-# 		fp_logger.debug("Mean squared error: %.2f" + str(% mean_squared_error(test_y, predicted)))
-# 		# Explained variance score: 1 is perfect prediction
-# 		fp_logger.debug('R Square score: %.2f' % r2_score(test_y, predicted))
+		# The mean squared error
+		fp_logger.debug("Mean squared error: %.2f" % mean_squared_error(test_y, predicted))
+		# Explained variance score: 1 is perfect prediction
+		fp_logger.debug('R Square score: %.2f' % r2_score(test_y, predicted))
 		accuracy = model.score(test_x,test_y)
 		fp_logger.debug("Accuracy: " + str( accuracy*100)+ str('%'))
 		return model
@@ -83,10 +83,10 @@ def main():
 	model = fp.createModel()
 	
 	if ((len(sys.argv)>1) and (len(sys.argv)==2)):
-		FoodPersonData['days'] = sys.argv[1]
+		FoodPersonData['days'] = [sys.argv[1]]
 	elif ((len(sys.argv)>1) and (len(sys.argv)==3)):
-		FoodPersonData['days'] = sys.argv[1]
-		FoodPersonData['occasion'] = sys.argv[2]
+		FoodPersonData['days'] = [sys.argv[1]]
+		FoodPersonData['occasion'] = [sys.argv[2]]
 	elif ((len(sys.argv)>1) and (len(sys.argv)==4)):
 		FoodPersonData['days'] = [sys.argv[1]]
 		FoodPersonData['occasion'] = [sys.argv[2]]
