@@ -2,24 +2,34 @@ package com.food.beans;
 
 public class PredictorInput {
 
-	private long date;
+	private String usageDate;
 
-	private int count;
+	private int attendance;
 
-	public long getDate() {
-		return date;
+	private String occasion;
+
+	public String getUsageDate() {
+		return usageDate;
 	}
 
-	public void setDate(long date) {
-		this.date = date;
+	public void setUsageDate(String usageDate) {
+		this.usageDate = usageDate;
 	}
 
-	public int getCount() {
-		return count;
+	public int getAttendance() {
+		return attendance;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setAttendance(int attendance) {
+		this.attendance = attendance;
+	}
+
+	public String getOccasion() {
+		return occasion;
+	}
+
+	public void setOccasion(String occasion) {
+		this.occasion = occasion;
 	}
 
 }

@@ -2,14 +2,14 @@ package com.food.beans;
 
 public class PredictorReply {
 
-	private int count;
+	private String quantity;
 
-	public int getCount() {
-		return count;
+	public String getQuantity() {
+		return quantity;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 
 }

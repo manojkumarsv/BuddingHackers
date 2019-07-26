@@ -11,8 +11,6 @@ public class User {
 
 	private String password;
 
-	private String confirmPassword;
-
 	private String firstName;
 
 	private String lastName;
@@ -40,14 +38,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 
 	public String getFirstName() {
