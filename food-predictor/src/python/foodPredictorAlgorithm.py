@@ -94,6 +94,6 @@ def main():
 	
 	
 	foodperson =  fp.predictFood(model,FoodPersonData)
-	return int(foodperson)	
+	print (int(foodperson))	
 	
 main()
