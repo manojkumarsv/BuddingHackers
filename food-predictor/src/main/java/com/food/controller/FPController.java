@@ -1,8 +1,24 @@
 package com.food.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,11 +30,20 @@ import com.food.beans.RegistrationInput;
 import com.food.cassandra.entity.User;
 import com.food.cassandra.repositories.UserRepository;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+
 @Controller
 public class FPController {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private JavaMailSender sender;
+
+	@Autowired
+	private Configuration freemarkerConfig;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public String welcomeUser() {
@@ -30,11 +55,8 @@ public class FPController {
 		return "register";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/register")
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public ResponseEntity<String> registerUser(@RequestBody RegistrationInput input) {
-		if (!input.getPassword().equals(input.getConfirmPassword())) {
-			return ResponseEntity.badRequest().body("Password does not match!");
-		}
 		if (userRepository.existsById(input.getUserName())) {
 			return ResponseEntity.badRequest().body("User with name " + input.getUserName() + " already exists");
 		}
@@ -42,34 +64,117 @@ public class FPController {
 		User user = new User();
 		user.setUser(input.getUserName());
 		user.setPassword(input.getPassword());
-		user.setConfirmPassword(input.getConfirmPassword());
 		user.setFirstName(input.getFirstName());
 		user.setLastName(input.getLastName());
 		user.setEmailAddress(input.getEmailAddress());
 		user.setOrganization(input.getOrganization());
 		user.setContactNumber(input.getContactNumber());
 
-		userRepository.save(user);
+		user = userRepository.save(user);
+		sendRegistrationSuccessfulEmail(user);
 
 		return ResponseEntity.ok("OK");
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
 	public ResponseEntity<String> loginUser(@RequestBody LoginInput input) {
-		return ResponseEntity.ok("OK");
+		if (userRepository.existsById(input.getUserName())) {
+			Optional<User> user = userRepository.findById(input.getUserName());
+			if (user.isPresent()) {
+				return ResponseEntity.ok("OK");
+			} else {
+				return ResponseEntity.badRequest().body("Password is invalid");
+			}
+		} else {
+			return ResponseEntity.badRequest().body("Unknown user, " + input.getUserName());
+		}
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/predict")
 	public String predictForm() {
 		return "predict-form";
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/predict")
-	public PredictorReply predictFoodQuantity(@RequestBody PredictorInput input) {
-		PredictorReply reply = new PredictorReply();
-		reply.setCount(input.getCount());
 
-		return reply;
+	@RequestMapping(method = RequestMethod.POST, value = "/predict")
+	public ResponseEntity<String> predictFoodQuantity(@RequestBody PredictorInput input) {
+		PredictorReply reply = new PredictorReply();
+		reply.setQuantity(executeScript(input));
+
+		return ResponseEntity.ok(reply.getQuantity());
+	}
+
+	private String executeScript(PredictorInput input) {
+		Calendar c = Calendar.getInstance();
+
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			c.setTime(format1.parse(input.getUsageDate()));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+
+		DateFormat format2 = new SimpleDateFormat("EEEE");
+		String day = format2.format(c.getTime());
+
+		StringBuilder builder = new StringBuilder("/opt/rh/rh-python36/root/usr/bin/python ");
+		builder.append(System.getProperty("user.dir"));
+		builder.append("/src/python/foodPredictorAlgorithm.py ");
+		builder.append(day).append(" ");
+		builder.append(input.getOccasion()).append(" ");
+		builder.append(input.getAttendance());
+
+		Process process = null;
+		BufferedReader in = null;
+		String reply = null;
+		try {
+			ProcessBuilder pb = new ProcessBuilder(builder.toString().split(" "));
+			pb.redirectErrorStream(true);
+			process = pb.start();
+			process.waitFor();
+			in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				reply = line;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return reply != null ? reply : new String();
+	}
+
+	private void sendRegistrationSuccessfulEmail(User user) {
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		Map<String, Object> model = new HashMap<>();
+		model.put("user", user.getFirstName() + " " + user.getLastName());
+
+		// set loading location to src/main/resources
+		// You may want to use a subfolder such as /templates here
+		freemarkerConfig.setClassForTemplateLoading(this.getClass(), "/templates");
+
+		try {
+			Template t = freemarkerConfig.getTemplate("welcome.ftl");
+			String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
+
+			helper.setFrom(user.getEmailAddress());
+			helper.setTo(user.getEmailAddress());
+			helper.setText(text, true);
+			helper.setSubject("Your Registration with FPA is Successful!");
+
+			sender.send(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

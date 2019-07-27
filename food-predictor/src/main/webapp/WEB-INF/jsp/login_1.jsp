@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Food Predictor</title>
-<!-- <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  -->
+<!-- <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"	rel="stylesheet">  -->
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/layout.css" rel="stylesheet">
 <meta charset="utf-8">
@@ -21,7 +21,7 @@
 			<div class="main">
 				<div class="wrapper">
 					<h1>
-						<a href="index.html" class="springy-text">Budding Hackers</a>
+						<a href="index.html">Budding Hackers</a>
 					</h1>
 					<a class="button-1 signOutBtn" id="signOutBtn" href="#">Sign
 						out</a>
@@ -126,43 +126,43 @@
 						</div>
 					</div>
 				</div>
-				<div id="foodPredictionContainer" style="display: none">
-				<img src="../../images/slider-img1.jpg" alt="" />
-				<div class="column-1">
-					<div class="indent-left">
-						<div class="maxheight indent-bot">
-							
-								Welcome!
-								<table>
-									<tr>
-										<td>Date</td>
-										<td><input type="date" id="usageDate" name="event-date"
-											min="2018-01-01" max="2019-12-31" class="loginInput" required></td>
-									</tr>
-									<tr>
-										<td>Attendance</td>
-										<td><input id="attendance" type="number"
-											name="attendance" class="loginInput" required></td>
-									</tr>
-									<tr>
-										<td>Occasion</td>
-										<td><select id="occasion" class="combo">
-												<option value="workingDay">Working Day</option>
-												<option value="holiday">Holiday</option>
-										</select></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td><a class="button-1 regSubmitBtn" id="predictFood"
-											href="#">Predict</a></td>
-									</tr>
-								</table>
-							</div>
+			</div>
+		</div>
+		<div>
+			<div class="column-2">
+				<div class="indent-left">
+					<div class="maxheight indent-bot">
+						<div id="foodPredictionContainer" style="display: none">
+							Welcome!
+							<table>
+								<tr>
+									<td>Date</td>
+									<td><input type="date" id="usageDate" name="event-date"
+										min="2018-01-01" max="2019-12-31" class="loginInput" required></td>
+								</tr>
+								<tr>
+									<td>Attendance</td>
+									<td><input id="attendance" type="number" name="attendance"
+										class="loginInput" required></td>
+								</tr>
+								<tr>
+									<td>Occasion</td>
+									<td><select id="occasion" class="combo">
+											<option value="workingDay">Working Day</option>
+											<option value="holiday">Holiday</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><a class="button-1 regSubmitBtn" id="predictFood"
+										href="#">Predict</a></td>
+								</tr>
+							</table>
+						</div>
 
-							<div id="foodPredictionResultContainer" style="display: none">
-								<label id="foodPredictionCount" class="predictresult"> Expected attendance
-									count </label>
-							</div>
+						<div id="foodPredictionResultContainer" style="display: none">
+							<label id="foodPredictionCount"> Expected attendance
+								count </label>
 						</div>
 					</div>
 				</div>
@@ -170,22 +170,22 @@
 		</div>
 	</header>
 	<script type="text/javascript">
-Cufon.refresh();
-Cufon.now();
-</script>
+		Cufon.refresh();
+		Cufon.now();
+	</script>
 	<script type="text/javascript">
-$(window).load(function() {
-$('.slider')._TMS({
-duration : 1000,
-easing : 'easeOutQuint',
-preset : 'slideDown',
-slideshow : 7000,
-banners : false,
-pauseOnHover : true,
-pagination : true,
-pagNums : false
-});
-});
-</script>
+		$(window).load(function() {
+			$('.slider')._TMS({
+				duration : 1000,
+				easing : 'easeOutQuint',
+				preset : 'slideDown',
+				slideshow : 7000,
+				banners : false,
+				pauseOnHover : true,
+				pagination : true,
+				pagNums : false
+			});
+		});
+	</script>
 </body>
 </html>
