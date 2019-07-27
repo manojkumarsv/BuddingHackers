@@ -1,0 +1,11 @@
+Date,days,occasion,category,attendance,shortage,attended
+11-Jan-17,Wednesday,Workingday,Veg,285,-91,160
+12-Jan-17,Thursday,Workingday,Veg,395,-112,275
+13-Jan-17,Friday,Workingday,NonVeg,462,12,569
+14-Jan-17,Saturday,Weekend,,0,0,0
+15-Jan-17,Sunday,Weekend,,0,0,0
+16-Jan-17,Monday,Workingday,Veg,300,-28,258
+17-Jan-17,Tuesday,Workingday,Veg,490,-82,375
+18-Jan-17,Wednesday,Workingday,NonVeg,331,129,550
+19-Jan-17,Thursday,Workingday,NonVeg,460,110,600
+20-Jan-17,Friday,Holiday,,0,0,0
