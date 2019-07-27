@@ -23,6 +23,7 @@ fp_logger = inst_log.setLoggerConfig()
 homeDir = path.abspath(path.join(__file__,"../../../../"))
 dataPath = path.abspath(path.join(__file__,"../../"))
 datafile = dataPath + "/data//fwdata.csv"
+uiPath = dataPath + "/main/webapp/images/"
 
 class foodPred:
 	
@@ -76,6 +77,9 @@ class foodPred:
 		fp_logger.debug("Saving Graph")
 		plt.savefig(dataPath + '/data//predictedFoodPerson.png', dpi=100)
 		plt.savefig(dataPath + '/data//predictedFoodPerson.pdf', dpi=100)
+		
+		plt.savefig(uiPath + '//predictedFoodPerson.png', dpi=100)
+		
 		#plt.show()
 	
 	def createModel(self):
