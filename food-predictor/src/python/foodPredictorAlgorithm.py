@@ -24,8 +24,13 @@ fp_logger = inst_log.setLoggerConfig()
 
 homeDir = path.abspath(path.join(__file__,"../../../../"))
 dataPath = path.abspath(path.join(__file__,"../../"))
-datafile = dataPath + "/data//fwdata_1.csv"
+datafile = dataPath + "/data//fwdata.csv"
 uiPath = dataPath + "/main/webapp/images/"
+
+from pathlib import Path
+home = str(Path.home())
+# print(home)
+
 
 FoodPerson_pred = pd.DataFrame()
 
@@ -88,6 +93,7 @@ class foodPred:
 		fp_logger.debug("Saving Graph")
 		plt.savefig(dataPath + '/data//predictedFoodPerson.png', dpi=100)		
 		plt.savefig(uiPath + '//predictedFoodPerson.png', dpi=100)
+		plt.savefig(home + '//predictedFoodPerson.png', dpi=100)
 		
 		#plt.show()
 	
