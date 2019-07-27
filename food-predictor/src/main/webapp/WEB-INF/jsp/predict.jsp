@@ -62,7 +62,7 @@
 							</div>
 
 							<div id="foodPredictionResultContainer" style="display: none">
-								<blink id="foodPredictionCount" class="predictresult">
+								<blink id="foodPredictionCount" class="glow">
 									Predicted No. of Meals : None</blink>
 							</div>
 							<div class="graphimg">
