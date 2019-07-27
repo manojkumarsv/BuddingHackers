@@ -14,13 +14,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.metrics import accuracy_score
 from sklearn import linear_model
+import matplotlib.pyplot as plt 
 
 import Logger
 inst_log = Logger.Logger()
 fp_logger = inst_log.setLoggerConfig()
 
 homeDir = path.abspath(path.join(__file__,"../../../../"))
-datafile = homeDir + "/data//fwdata.csv"
+dataPath = path.abspath(path.join(__file__,"../../"))
+datafile = dataPath + "/data//fwdata.csv"
 
 class foodPred:
 	
@@ -36,6 +38,7 @@ class foodPred:
 		df['occasion'] = pd.to_numeric(df['occasion'],errors='coerce').fillna(0).astype(np.int64)
 		df=df.replace('?',np.nan)
 		
+		
 		return train_test_split(df[training_features], df[target], train_size=split)
 	
 	def predictFood(self,model,FoodPersonData):
@@ -47,6 +50,33 @@ class foodPred:
 		pf = model.predict(FoodPerson)
 		fp_logger.info("Predicted food person: "+str(pf) )
 		return (pf)
+	
+	def drawGraph(self,x,y):
+		
+		
+		fp_logger.debug("Plotting Graph")
+		left = list(range(1, len(x)+1))
+
+		
+		plt.plot(left,x,label="Attendance")
+		plt.plot(left,y,label="Predicted")
+		
+		# naming the x axis 
+		plt.xlabel('Different Dates') 
+		# naming the y axis 
+		plt.ylabel('Attendance') 
+		# giving a title to my graph 
+		plt.title('Attendance VS Predicted Food person!') 
+		  
+		# show a legend on the plot 
+		plt.legend() 
+		  
+		# function to show the plot 		
+		plt.draw()
+		fp_logger.debug("Saving Graph")
+		plt.savefig(dataPath + '/data//predictedFoodPerson.png', dpi=100)
+		plt.savefig(dataPath + '/data//predictedFoodPerson.pdf', dpi=100)
+		#plt.show()
 	
 	def createModel(self):
 		# prepare data
@@ -72,8 +102,13 @@ class foodPred:
 		fp_logger.debug("Mean squared error: %.2f" % mean_squared_error(test_y, predicted))
 		# Explained variance score: 1 is perfect prediction
 		fp_logger.debug('R Square score: %.2f' % r2_score(test_y, predicted))
-		accuracy = model.score(test_x,test_y)
+		accuracy = model.score(test_x, test_y)
 		fp_logger.debug("Accuracy: " + str( accuracy*100)+ str('%'))
+		
+		
+		self.drawGraph(test_x['attendance'],test_y)
+		
+		
 		return model
 
 def main():
