@@ -24,7 +24,7 @@ fp_logger = inst_log.setLoggerConfig()
 
 homeDir = path.abspath(path.join(__file__,"../../../../"))
 dataPath = path.abspath(path.join(__file__,"../../"))
-datafile = dataPath + "/data//fwdata_1.csv"
+datafile = dataPath + "/data//fwdata.csv"
 uiPath = dataPath + "/main/webapp/images/"
 
 FoodPerson_pred = pd.DataFrame()
