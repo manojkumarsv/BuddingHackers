@@ -1,11 +1,15 @@
 package com.food.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +31,9 @@ import com.food.beans.LoginInput;
 import com.food.beans.PredictorInput;
 import com.food.beans.PredictorReply;
 import com.food.beans.RegistrationInput;
+import com.food.cassandra.entity.HistoricalData;
 import com.food.cassandra.entity.User;
+import com.food.cassandra.repositories.HistoricalDataRepository;
 import com.food.cassandra.repositories.UserRepository;
 
 import freemarker.template.Configuration;
@@ -40,6 +46,9 @@ public class FPController {
 	private UserRepository userRepository;
 
 	@Autowired
+	private HistoricalDataRepository historicalDataRepository;
+
+	@Autowired
 	private JavaMailSender sender;
 
 	@Autowired
@@ -47,6 +56,15 @@ public class FPController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public String welcomeUser() {
+		populateHistoricalData();
+		
+		PredictorInput input = new PredictorInput();
+		input.setUsageDate("2019-01-01");
+		input.setOccasion("Weekend");
+		input.setAttendance(100);
+		input.setFoodType("Veg");
+		executeScript(input);
+		
 		return "login";
 	}
 
@@ -121,6 +139,7 @@ public class FPController {
 		builder.append("/src/python/foodPredictorAlgorithm.py ");
 		builder.append(day).append(" ");
 		builder.append(input.getOccasion()).append(" ");
+		builder.append(input.getFoodType()).append(" ");
 		builder.append(input.getAttendance());
 
 		Process process = null;
@@ -158,15 +177,13 @@ public class FPController {
 		Map<String, Object> model = new HashMap<>();
 		model.put("user", user.getFirstName() + " " + user.getLastName());
 
-		// set loading location to src/main/resources
-		// You may want to use a subfolder such as /templates here
 		freemarkerConfig.setClassForTemplateLoading(this.getClass(), "/templates");
 
 		try {
 			Template t = freemarkerConfig.getTemplate("welcome.ftl");
 			String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
-			helper.setFrom(user.getEmailAddress());
+			helper.setFrom("admin@fp.com");
 			helper.setTo(user.getEmailAddress());
 			helper.setText(text, true);
 			helper.setSubject("Your Registration with FPA is Successful!");
@@ -174,6 +191,54 @@ public class FPController {
 			sender.send(message);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void populateHistoricalData() {
+		Calendar c = Calendar.getInstance();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(
+					new FileReader(new File(System.getProperty("user.dir") + "/src/main/resources/fwdata.csv")));
+			String line = null;
+			ArrayList<HistoricalData> historyList = new ArrayList<>();
+			while ((line = br.readLine()) != null) {
+				try {
+					String[] row = line.split(",");
+					DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						c.setTime(format1.parse(row[0]));
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
+
+					HistoricalData data = new HistoricalData();
+					data.setDate(c.getTimeInMillis());
+					data.setDay(row[1]);
+					data.setOccassion(row[2]);
+					data.setAttendance(Integer.parseInt(row[3]));
+					data.setSurplus(Integer.parseInt(row[4]));
+					data.setAttended(Integer.parseInt(row[5]));
+
+					historyList.add(data);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+			historicalDataRepository.saveAll(historyList);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

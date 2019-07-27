@@ -127,11 +127,12 @@
 					</div>
 				</div>
 				<div id="foodPredictionContainer" style="display: none">
-				<img src="../../images/slider-img1.jpg" alt="" />
-				<div class="column-1">
-					<div class="indent-left">
-						<div class="maxheight indent-bot">
-							
+					<img class="predictimg" src="../../images/predictedFoodPerson.png"
+						alt="" />
+					<div class="column-1">
+						<div class="indent-left">
+							<div class="maxheight indent-bot">
+
 								Welcome!
 								<table>
 									<tr>
@@ -147,8 +148,16 @@
 									<tr>
 										<td>Occasion</td>
 										<td><select id="occasion" class="combo">
-												<option value="workingDay">Working Day</option>
-												<option value="holiday">Holiday</option>
+												<option value="Workingday">Working Day</option>
+												<option value="Weekend">Weekend</option>
+												<option value="Holiday">Holiday</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>Food Type</td>
+										<td><select id="foodType" class="combo">
+												<option value="Veg">Veg</option>
+												<option value="NonVeg">Non-Veg</option>
 										</select></td>
 									</tr>
 									<tr>
@@ -160,8 +169,8 @@
 							</div>
 
 							<div id="foodPredictionResultContainer" style="display: none">
-								<label id="foodPredictionCount" class="predictresult"> Expected attendance
-									count </label>
+								<h1 id="foodPredictionCount" class="predictresult">Predicted
+									No. of Meals</h1>
 							</div>
 						</div>
 					</div>
@@ -170,22 +179,22 @@
 		</div>
 	</header>
 	<script type="text/javascript">
-Cufon.refresh();
-Cufon.now();
-</script>
+		Cufon.refresh();
+		Cufon.now();
+	</script>
 	<script type="text/javascript">
-$(window).load(function() {
-$('.slider')._TMS({
-duration : 1000,
-easing : 'easeOutQuint',
-preset : 'slideDown',
-slideshow : 7000,
-banners : false,
-pauseOnHover : true,
-pagination : true,
-pagNums : false
-});
-});
-</script>
+		$(window).load(function() {
+			$('.slider')._TMS({
+				duration : 1000,
+				easing : 'easeOutQuint',
+				preset : 'slideDown',
+				slideshow : 7000,
+				banners : false,
+				pauseOnHover : true,
+				pagination : true,
+				pagNums : false
+			});
+		});
+	</script>
 </body>
 </html>

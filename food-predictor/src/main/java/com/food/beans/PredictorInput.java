@@ -8,6 +8,8 @@ public class PredictorInput {
 
 	private String occasion;
 
+	private String foodType;
+
 	public String getUsageDate() {
 		return usageDate;
 	}
@@ -30,6 +32,14 @@ public class PredictorInput {
 
 	public void setOccasion(String occasion) {
 		this.occasion = occasion;
+	}
+
+	public String getFoodType() {
+		return foodType;
+	}
+
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
 	}
 
 }

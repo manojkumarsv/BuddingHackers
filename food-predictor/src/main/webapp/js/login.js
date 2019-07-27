@@ -1,7 +1,7 @@
 $(document).ready(function(){	
     $("#register").click(function(){
-	    	$('#loginusername')[0].value=null;
-	   	 	$('#loginpassword')[0].value=null;
+	   	 	document.getElementById("loginusername").reset;
+	   	 	document.getElementById("loginpassword").reset;
     		$("#loginContainer").hide();
     		$("#aboutContainer").hide();
     		$("#registerContainer").show();    		
@@ -31,14 +31,15 @@ $(document).ready(function(){
 	           contentType: "application/json; charset=utf-8",
 	           success: function(data) {        	   
 	        	 alert("Registered Successfully. Please login to proceed.");
-	        	 $('#usernamesignup')[0].value=null;
-	        	 $('#passwordsignup')[0].value=null;
-	        	 $('#emailsignup')[0].value=null;
-	        	 $('#contact')[0].value=null;
-	        	 $('#organization')[0].value=null;
-	        	 $('#firstname')[0].value=null;
-	        	 $('#lastname')[0].value=null;
-	        	 $('#passwordsignup_confirm')[0].value=null;
+	        	 document.getElementById("usernamesignup").reset;
+	        	 document.getElementById("passwordsignup").reset;
+	        	 document.getElementById("emailsignup").reset;
+	        	 document.getElementById("contact").reset;
+	        	 document.getElementById("organization").reset;
+	        	 document.getElementById("firstname").reset;
+	        	 document.getElementById("lastname").reset;
+	        	 document.getElementById("passwordsignup_confirm").reset;
+	        	 
 	        	 $("#loginContainer").show();
 	      		 $("#aboutContainer").show();
 	      		 $("#registerContainer").hide();
@@ -64,8 +65,8 @@ $(document).ready(function(){
                 {
                     alert("Login failed. Please try again");
                 } else {
-                	$('#loginusername')[0].value=null;
-               	 	$('#loginpassword')[0].value=null;
+               	 	document.getElementById("loginusername").reset;
+               	 	document.getElementById("loginpassword").reset;
                 	$("#loginPageContainer").hide();
                 	$("#aboutContainer").hide();
                 	$("#signOutBtn").show();
@@ -86,10 +87,10 @@ $(document).ready(function(){
     });
     
     $("#goToLogin").click(function() {
-	 $('#usernamesignup')[0].value=null;
-	 $('#passwordsignup')[0].value=null;
-	 $('#emailsignup')[0].value=null;
-	 $('#passwordsignup_confirm')[0].value=null;
+	 document.getElementById("usernamesignup").reset;
+	 document.getElementById("passwordsignup").reset;
+	 document.getElementById("emailsignup").reset;
+	 document.getElementById("passwordsignup_confirm").reset;
 	 $("#registerContainer").hide();
 	 $("#loginContainer").show();
 	 $("#aboutContainer").show();
@@ -100,6 +101,7 @@ $(document).ready(function(){
 			usageDate: $('#usageDate').val(),
 			attendance: $('#attendance').val(),
 			occasion: $('#occasion').val(),
+			foodType: $('#foodType').val()
     	};
 		if(foodPredictionData.usageDate==null || foodPredictionData.attendance==null || foodPredictionData.occasion ==null){
 			 alert("Please enter all values");
@@ -113,13 +115,14 @@ $(document).ready(function(){
 	        	   var r = JSON.parse(response);
 	        	 alert("Food Prediction was successful.");
 	        	 $("#usageDate").show();
-	        	 $('#attendance')[0].value=null;
-	        	 $('#occasion')[0].value=null;
+	        	 document.getElementById("attendance").reset;
+	        	 document.getElementById("occasion").reset;
+	        	 document.getElementById("foodType").reset;
 	        	 $("#loginContainer").hide();
 	      		 $("#aboutContainer").hide();
 	      		 $("#registerContainer").hide();
 	      		 $('#foodPredictionResultContainer').show();
-	      		 $('#foodPredictionCount').html('Predicted Quantity of food '.concat(r));
+	      		 $('#foodPredictionCount').html('Predicted No. of Meals '.concat(r));
 	           },
 	           error: function(){ 
 	        	   alert("Food Prediction failed.");
