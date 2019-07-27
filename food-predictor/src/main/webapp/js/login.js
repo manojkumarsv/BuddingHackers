@@ -84,6 +84,7 @@ $(document).ready(function(){
     	 $("#foodPredictionContainer").hide();
     	 $("#aboutContainer").show();
     	 $("#loginPageContainer").show();
+    	 $("#loginContainer").show();
     });
     
     $("#goToLogin").click(function() {
@@ -121,7 +122,7 @@ $(document).ready(function(){
 	      		 $("#aboutContainer").hide();
 	      		 $("#registerContainer").hide();
 	      		 $('#foodPredictionResultContainer').show();
-	      		 document.getElementById("graphimg").src = "/home/hackathon19/predictedFoodPerson.png?r=" + Math.random(); 
+	      		 document.getElementById("graphimg").src = "/root/predictedFoodPerson.png?r=" + Math.random(); 
 	      		 $('#foodPredictionCount').html('Predicted No. of Meals : '.concat(r));
 	           },
 	           error: function(){ 

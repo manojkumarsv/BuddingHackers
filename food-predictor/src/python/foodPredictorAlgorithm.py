@@ -29,7 +29,6 @@ uiPath = dataPath + "/main/webapp/images/"
 
 from pathlib import Path
 home = str(Path.home())
-# print(home)
 
 
 FoodPerson_pred = pd.DataFrame()
