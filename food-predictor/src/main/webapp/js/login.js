@@ -113,7 +113,6 @@ $(document).ready(function(){
 	           contentType: "application/json; charset=utf-8",
 	           success: function(response) {
 	        	   var r = JSON.parse(response);
-	        	 alert("Food Prediction was successful.");
 	        	 $("#usageDate").show();
 	        	 document.getElementById("attendance").reset;
 	        	 document.getElementById("occasion").reset;
@@ -122,7 +121,8 @@ $(document).ready(function(){
 	      		 $("#aboutContainer").hide();
 	      		 $("#registerContainer").hide();
 	      		 $('#foodPredictionResultContainer').show();
-	      		 $('#foodPredictionCount').html('Predicted No. of Meals '.concat(r));
+	      		 document.getElementById("graphimg").src = "../images/predictedFoodPerson.png?r=" + Math.random(); 
+	      		 $('#foodPredictionCount').html('Predicted No. of Meals : '.concat(r));
 	           },
 	           error: function(){ 
 	        	   alert("Food Prediction failed.");

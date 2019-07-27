@@ -141,6 +141,8 @@ public class FPController {
 		builder.append(input.getOccasion()).append(" ");
 		builder.append(input.getFoodType()).append(" ");
 		builder.append(input.getAttendance());
+		
+		System.out.println(builder.toString());
 
 		Process process = null;
 		BufferedReader in = null;
@@ -183,7 +185,7 @@ public class FPController {
 			Template t = freemarkerConfig.getTemplate("welcome.ftl");
 			String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
-			helper.setFrom("admin@fp.com");
+			helper.setFrom("logumohan@gmail.com");
 			helper.setTo(user.getEmailAddress());
 			helper.setText(text, true);
 			helper.setSubject("Your Registration with FPA is Successful!");
