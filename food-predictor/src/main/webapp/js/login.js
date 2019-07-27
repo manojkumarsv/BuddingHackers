@@ -121,7 +121,7 @@ $(document).ready(function(){
 	      		 $("#aboutContainer").hide();
 	      		 $("#registerContainer").hide();
 	      		 $('#foodPredictionResultContainer').show();
-	      		 document.getElementById("graphimg").src = "../images/predictedFoodPerson.png?r=" + Math.random(); 
+	      		 document.getElementById("graphimg").src = "/home/hackathon19/predictedFoodPerson.png?r=" + Math.random(); 
 	      		 $('#foodPredictionCount').html('Predicted No. of Meals : '.concat(r));
 	           },
 	           error: function(){ 

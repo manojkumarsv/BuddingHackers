@@ -23,16 +23,16 @@ public class EmailConfig {
 		mailSender.setHost(environment.getProperty("smtp.host"));
 		mailSender.setPort(Integer.parseInt(environment.getProperty("smtp.port")));
 
-		mailSender.setUsername(environment.getProperty("sender.username"));
-		mailSender.setPassword(environment.getProperty("sender.password"));
+		//mailSender.setUsername(environment.getProperty("sender.username"));
+		//mailSender.setPassword(environment.getProperty("sender.password"));
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");
-		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.auth", "false");
 		//props.put("mail.smtp.starttls.enable", "true");
 		//props.put("mail.smtp.starttls.required", "true");
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.ssl.trust", environment.getProperty("smtp.host"));
+		//props.put("mail.smtp.ssl.enable", "true");
+		//props.put("mail.smtp.ssl.trust", environment.getProperty("smtp.host"));
 		props.put("mail.debug", "true");
 		props.put("mail.smtp.socketFactory.fallback", "true");
 
