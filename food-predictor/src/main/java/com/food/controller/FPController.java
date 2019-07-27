@@ -185,7 +185,7 @@ public class FPController {
 			Template t = freemarkerConfig.getTemplate("welcome.ftl");
 			String text = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 
-			helper.setFrom("logumohan@gmail.com");
+			helper.setFrom("loganathan.m@aricent.com");
 			helper.setTo(user.getEmailAddress());
 			helper.setText(text, true);
 			helper.setSubject("Your Registration with FPA is Successful!");
